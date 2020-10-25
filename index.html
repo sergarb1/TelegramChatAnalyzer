@@ -10,10 +10,21 @@
 </head>
 
 <body>
-	<form name="upload" action="/upload" method="post">
-		<input type="file" multiple required>
-		<input type="submit" id="submit" value="Submit" disabled>
-	</form>
+
+	<!-- Navbar (sit on top) -->
+<div >
+	<div >
+	  <a href="#home" class="w3-bar-item w3-button"><b>Telegram Chat Analyzer</b></a>
+	  <!-- Float links to the right. Hide them on small screens -->
+	  <div >
+
+		<form name="upload" action="/upload" method="post">
+			<input type="file" multiple required>
+			<input type="submit" id="submit" value="Cargar datos" disabled>
+		</form>
+	  </div>
+	</div>
+  </div>
     <section class="output"></section>
 </body>
 </html>

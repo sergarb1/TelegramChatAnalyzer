@@ -9,6 +9,7 @@ const waitForCalls = (count, fn) => {
 }
 
 
+
 const messagesPerAuthor = peopleMsg => {
 	let counter = new Map()
 	for (const {author} of peopleMsg) {
@@ -123,31 +124,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 body.removeChild(body.firstChild)
             }
 
-			/*let tbl = document.createElement("table")
-			let tblBody = document.createElement("tbody")
-
-			for (let tableAuthor of authorVoiceSort) {
-				let row = document.createElement("tr")
-
-				tblBody.appendChild(row)
-
-				let cellA = document.createElement("td");
-				let cellAText = document.createTextNode(tableAuthor[0]);
-				cellA.appendChild(cellAText);
-				row.appendChild(cellA);
-
-				let cellN = document.createElement("td");
-				let cellNText = document.createTextNode(tableAuthor[1]);
-				cellN.appendChild(cellNText);
-				row.appendChild(cellN);
-			}
+			/*
 
 			let tbl2 = document.createElement("table")
 			let tblBody2 = document.createElement("tbody")
 
+			
+
+			// Create an empty <thead> element and add it to the table:
+			let tblHeader2 = tbl2.createTHead();
+
+			tblHeader2.innerHTML = "<tr><td colspan='2'>Palabras más utilizadas</td></tr>"; 
+
+			// Contador que define el maximo de palabras a mostrar
 			let counter = 0
 			for (let tableMsg of wordsSort) {
-				if (counter === 5)
+				if (counter === 15)
 					continue
 				else
 					counter += 1
@@ -167,19 +159,63 @@ document.addEventListener('DOMContentLoaded', () => {
 				row.appendChild(cellN);
 			}
 
+			*/
+			let tbl3 = document.createElement("table")
+			let tblBody3 = document.createElement("tbody")
 
-			tbl.appendChild(tblBody)
-			tbl2.appendChild(tblBody2)
+			// Centramos la table
+
+			tbl3.style.marginLeft="auto";
+			tbl3.style.marginRight="auto";
+
+			
+
+			/* Cabecera de la tabla */
+
+			// Create an empty <thead> element and add it to the table:
+			let tblHeader3 = tbl3.createTHead();
+
+			tblHeader3.innerHTML = "<tr><td colspan='2'><b>Usuarios ordenados por numero de mensajes</b></td></tr>"; 
+
+			for (let author of authorMsgSort) {
+		
+				let row = document.createElement("tr")
+
+				tblBody3.appendChild(row)
+
+				let cellA = document.createElement("td");
+				let cellAText = document.createTextNode(author.name);
+				cellA.appendChild(cellAText);
+				row.appendChild(cellA);
+				
+				let cellN = document.createElement("td");
+				let cellNText = document.createTextNode(author.value);
+				cellN.appendChild(cellNText);
+				row.appendChild(cellN);
+				console.log("Hola");
+			}
+
+
+
+			//tbl2.appendChild(tblBody2)
+			tbl3.appendChild(tblBody3)
 			let br = document.createElement("br")
-			body.appendChild(tbl)
-			body.appendChild(br)
-			body.appendChild(tbl2)
-			tbl.setAttribute("border", "2")
-			tbl2.setAttribute("border", "1")*/
+
+			//body.appendChild(tbl2)
+			//body.appendChild(br)
+			body.appendChild(tbl3)
+
+			//tbl2.setAttribute("border", "1")
+			tbl3.setAttribute("border", "2")
 
             const canvas = document.createElement('canvas')
             canvas.width = 500
             canvas.height = 500
+			
+			// Centramos la imagen
+			canvas.style.padding="0";
+			canvas.style.margin="auto";
+			canvas.style.display="block";
 
             const context = canvas.getContext('2d')
             body.appendChild(canvas)
@@ -225,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			let sectionMsgPerHour = document.createElement('section')
 			sectionMsgPerHour.className = 'sectionMsgPerHour'
+			sectionMsgPerHour.innerHTML="<p align='center'><b>Rangos horarios de uso de Telegram:</b></p>";
 
             //const svgElement = document.createElement('svg')
 			//svgElement.setAttribute('id', 'line-chart')
